@@ -1,4 +1,9 @@
-import { PRODUCT_CREATE, PRODUCT_UPDATE, PRODUCT_DELETE } from './actionTypes';
+import {
+    PRODUCT_CREATE,
+    PRODUCT_UPDATE,
+    PRODUCT_DELETE,
+    PRODUCT_FILTER
+} from './actionTypes';
 
 export const productCreate = (product) => ({
     type: PRODUCT_CREATE,
@@ -13,4 +18,9 @@ export const productUpdate = (product) => ({
 export const productDelete = (product) => ({
     type: PRODUCT_DELETE,
     payload: product
+});
+
+export const productFilter = (query) => ({
+    type: PRODUCT_FILTER,
+    payload: query
 });
