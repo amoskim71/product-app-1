@@ -23,6 +23,7 @@ class ProductFrom extends Component {
         //Prevent form submission
         e.preventDefault();
         this.props.onProductSave(this.state);
+        this.props.history.push('/');
     }
 
     render() {
