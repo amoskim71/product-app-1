@@ -7,7 +7,9 @@ class ProductFrom extends Component {
     constructor(props) {
         super(props);
         this.state = props.product;
-        this._mode = (props.product.id && props.product.id) ? 'Edit' : 'Create';
+        this._mode = (this.state.id === 'undefined' || this.state.id === null)
+            ? 'Create'
+            : 'Edit';
     }
 
     onChagneHandle = (e) => {

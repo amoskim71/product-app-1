@@ -3,7 +3,14 @@ import ProductList from '../components/ProductList';
 import { productDelete, productFilter } from '../actions';
 
 const applyFilters = (products, filter) => {
-    return products;
+    if (!filter.query) {
+        return products;
+    }
+
+    return products.filter(product => {
+        let reg = RegExp('.*' + filter.query + '.*', 'ig');
+        return reg.test(product.title);
+    })
 }
 
 const mapStateToProps = (state) => ({

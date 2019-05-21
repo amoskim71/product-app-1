@@ -9,7 +9,10 @@ const mapStateToProps = (state, ownProps) => {
     let product = productSchema;
 
     if (params.hasOwnProperty('productId')) {
-        product = state.products.find(product => product.id.toString() === params.productId)
+        let tmp = state.products.find(product => product.id.toString() === params.productId)
+        if (tmp instanceof Object) {
+            product = tmp;
+        }
     }
     return {
         product
