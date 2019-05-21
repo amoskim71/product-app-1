@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Navigator from '../components/Navigator';
+import { genreateFakeProduct } from '../utils/dataProvider';
 
 class ProductFrom extends Component {
     constructor(props) {
@@ -22,15 +23,21 @@ class ProductFrom extends Component {
     handleSubmit = (e) => {
         //Prevent form submission
         e.preventDefault();
+
         this.props.onProductSave(this.state);
         this.props.history.push('/');
+    }
+
+    onGenerateFakeProduct = (e) => {
+        this.setState(genreateFakeProduct());
     }
 
     render() {
         return (
             <div className="row">
                 <div className="form-container col-md-8 m-auto">
-                    <Navigator to="/" title={this._mode + ' Product..'} buttonName="Bact to products" />
+                    <Navigator to="/" title={this._mode + ' Product..'}
+                        buttonName="Bact to products" />
                     <form className="mt-4" onSubmit={this.handleSubmit}>
                         <div className="form-group>">
                             <label>Name:</label>
@@ -63,7 +70,17 @@ class ProductFrom extends Component {
                             </input>
                         </div>
                         <div className="form-group mt-1">
-                            <button className="btn btn-primary">{this._mode}</button>
+                            {
+                                (this._mode === 'Create') &&
+                                <input type="button"
+                                    onClick={this.onGenerateFakeProduct}
+                                    value="Generate Fake"
+                                    className="btn btn-secondary btn-sm mr-2" />
+
+                            }
+                            <button
+                                className="btn btn-primary btn-sm">{this._mode} Product
+                            </button>
                         </div>
                     </form >
                 </div>

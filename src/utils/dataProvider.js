@@ -1,23 +1,25 @@
-export const products = [
-    {
-        id: 1,
-        title: 'Product A',
-        description: 'Product A is good',
-        price: 25,
-    },
-    {
-        id: 2,
-        title: 'Product B',
-        description: 'Product B is good',
-        price: 50,
-    },
-    {
-        id: 3,
-        title: 'Product C',
-        description: 'Product C is good',
-        price: 75,
+import faker from 'faker';
+import { v4 } from 'uuid';
+
+export const genreateFakeProduct = () => ({
+    id: null,
+    title: faker.commerce.productName(),
+    description: 'Test-' + faker.commerce.productMaterial(),
+    price: faker.commerce.price()
+});
+
+
+function productFactory(noOfProducts = 3) {
+    let products = [];
+
+    for (let i = 0; i < noOfProducts; i++) {
+        let product = genreateFakeProduct();
+        product.id = v4();
+        products.push(product);
     }
-];
+    return products;
+};
+
 
 export const productSchema = {
     id: null,
@@ -25,3 +27,5 @@ export const productSchema = {
     description: '',
     price: ''
 }
+
+export const products = productFactory();
