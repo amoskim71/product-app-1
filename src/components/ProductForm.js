@@ -30,7 +30,7 @@ class ProductFrom extends Component {
         return (
             <div className="row">
                 <div className="form-container col-md-8 m-auto">
-                    <Navigator to="/" title={this._mode + ' Product..'} buttonName="back to products" />
+                    <Navigator to="/" title={this._mode + ' Product..'} buttonName="Bact to products" />
                     <form className="mt-4" onSubmit={this.handleSubmit}>
                         <div className="form-group>">
                             <label>Name:</label>

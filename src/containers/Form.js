@@ -2,13 +2,14 @@ import { connect } from 'react-redux';
 import ProductFrom from '../components/ProductForm';
 import { productSchema } from '../utils/dataProvider';
 import { productCreate, productUpdate } from '../actions/index';
+import { v4 } from 'uuid';
 
 const mapStateToProps = (state, ownProps) => {
     const { params } = ownProps.match;
     let product = productSchema;
 
     if (params.hasOwnProperty('productId')) {
-        product = state.products.find(product => product.id == params.productId)
+        product = state.products.find(product => product.id.toString() === params.productId)
     }
     return {
         product
@@ -17,9 +18,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => ({
     onProductSave: product => {
-        if (product.id !== null) {
+        if (product.id) {
             dispatch(productUpdate(product));
         } else {
+            product.id = v4();
             dispatch(productCreate(product));
         }
     }

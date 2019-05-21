@@ -19,7 +19,7 @@ class ProductList extends Component {
                     buttonName="Create Product"
                 />
 
-                <div className="product-list">
+                <div className="product-list pr-4 pl-4">
                     {products.length > 0 &&
                         products.map((product, index) => {
                             return <Product
