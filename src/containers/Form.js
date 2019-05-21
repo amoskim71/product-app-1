@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import ProductFrom from '../components/ProductForm';
 import { productSchema } from '../utils/dataProvider';
+import { productCreate, productUpdate } from '../actions/index';
 
 const mapStateToProps = (state, ownProps) => {
     const { params } = ownProps.match;
@@ -14,4 +15,14 @@ const mapStateToProps = (state, ownProps) => {
     }
 };
 
-export default connect(mapStateToProps)(ProductFrom);
+const mapDispatchToProps = (dispatch) => ({
+    onProductSave: product => {
+        if (product.id !== null) {
+            dispatch(productUpdate(product));
+        } else {
+            dispatch(productCreate(product));
+        }
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductFrom);
