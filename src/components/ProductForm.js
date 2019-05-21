@@ -6,8 +6,13 @@ import { genreateFakeProduct } from '../utils/dataProvider';
 class ProductFrom extends Component {
     constructor(props) {
         super(props);
-        this.state = props.product;
-        this._mode = (this.state.id === 'undefined' || this.state.id === null)
+        this.state = {
+            product: props.product,
+            errors: {
+
+            }
+        };
+        this._mode = (this.state.product.id === 'undefined' || this.state.product.id === null)
             ? 'Create'
             : 'Edit';
     }
@@ -18,7 +23,9 @@ class ProductFrom extends Component {
         const name = target.name;
 
         this.setState({
-            [name]: value
+            product: {
+                [name]: value
+            }
         });
     }
 
@@ -26,12 +33,14 @@ class ProductFrom extends Component {
         //Prevent form submission
         e.preventDefault();
 
-        this.props.onProductSave(this.state);
+        this.props.onProductSave(this.state.product);
         this.props.history.push('/');
     }
 
     onGenerateFakeProduct = (e) => {
-        this.setState(genreateFakeProduct());
+        this.setState({
+            product: genreateFakeProduct()
+        });
     }
 
     render() {
@@ -45,7 +54,7 @@ class ProductFrom extends Component {
                             <label>Name:</label>
                             <input type="text"
                                 className="form-control"
-                                value={this.state.title}
+                                value={this.state.product.title}
                                 onChange={this.onChagneHandle}
                                 name="title">
                             </input>
@@ -55,7 +64,7 @@ class ProductFrom extends Component {
 
                             <textarea
                                 className="form-control"
-                                value={this.state.description}
+                                value={this.state.product.description}
                                 onChange={this.onChagneHandle}
                                 rows={5}
                                 name="description"
@@ -66,7 +75,7 @@ class ProductFrom extends Component {
                             <label>Price:</label>
                             <input type="number"
                                 className="form-control"
-                                value={this.state.price}
+                                value={this.state.product.price}
                                 onChange={this.onChagneHandle}
                                 name="price">
                             </input>
