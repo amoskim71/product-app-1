@@ -12,6 +12,9 @@ const mapStateToProps = (state, ownProps) => {
         let tmp = state.products.find(product => product.id.toString() === params.productId)
         if (tmp instanceof Object) {
             product = tmp;
+        } else {
+            //Redirect back to home page if no entity exists of that id.
+            ownProps.history.push('/');
         }
     }
     return {
