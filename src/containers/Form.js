@@ -7,16 +7,15 @@ import { v4 } from 'uuid';
 const mapStateToProps = (state, ownProps) => {
     const { params } = ownProps.match;
     let product = productSchema;
-
     if (params.hasOwnProperty('productId')) {
-        let tmp = state.products.find(product => product.id.toString() === params.productId)
-        if (tmp instanceof Object) {
+        let tmp = state.products.find(product => product.id.toString() === params.productId);
+        if (tmp.hasOwnProperty('id') && tmp.id != null) {
             product = tmp;
         } else {
             //Redirect back to home page if no entity exists of that id.
             ownProps.history.push('/');
         }
-    };
+    }
     return {
         product
     };

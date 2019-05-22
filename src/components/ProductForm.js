@@ -7,10 +7,9 @@ import { genreateFakeProduct } from '../utils/dataProvider';
 class ProductFrom extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            product: props.product,
-            errors: []
-        };
+        this.state ={};
+        this.state.product = JSON.parse(JSON.stringify(props.product));
+        this.state.errors =[];
         this._mode = (this.state.product.id === 'undefined' || this.state.product.id === null)
             ? 'Create'
             : 'Edit';

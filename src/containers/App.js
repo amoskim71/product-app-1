@@ -11,7 +11,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" component={List} />
-            <Route path="/products/:productId/edit" component={Form} />
+            <Route exact path="/products/:productId/edit" component={Form} />
             <Route path="/products/create" component={Form} />
             <Route component={PageNotFound} />
           </Switch>
