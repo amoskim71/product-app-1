@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Navigator from '../components/Navigator';
+import ErrorList from '../components/ErrorList';
 import { genreateFakeProduct } from '../utils/dataProvider';
 
 class ProductFrom extends Component {
@@ -8,33 +9,62 @@ class ProductFrom extends Component {
         super(props);
         this.state = {
             product: props.product,
-            errors: {
-
-            }
+            errors: []
         };
         this._mode = (this.state.product.id === 'undefined' || this.state.product.id === null)
             ? 'Create'
             : 'Edit';
     }
 
+    //Simple validation
+    validate() {
+        let requiredFields = ['title', 'description', 'price'];
+        this.setState({
+            errors: []
+        });
+        let errors = []
+        for (const [key, value] of Object.entries(this.state.product)) {
+            if (requiredFields.includes(key)) {
+                if (!value.trim()) {
+                    let errorMessage = `The ${key} field is required`;
+                    errors.push(errorMessage);
+                }
+            }
+        }
+        this.setState({
+            errors: errors
+        });
+        return errors;
+    }
+
     onChagneHandle = (e) => {
+
         const target = e.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
 
         this.setState({
-            product: {
+            product: Object.assign(this.state.product, {
                 [name]: value
-            }
+            })
         });
+
+        this.validate();
     }
 
     handleSubmit = (e) => {
         //Prevent form submission
         e.preventDefault();
 
-        this.props.onProductSave(this.state.product);
-        this.props.history.push('/');
+        //validate the input
+        let errors = this.validate();
+
+        //If their is no errors submit the form
+        if (errors.length <= 0) {
+            this.props.onProductSave(this.state.product);
+            this.props.history.push('/');
+        }
+
     }
 
     onGenerateFakeProduct = (e) => {
@@ -50,6 +80,8 @@ class ProductFrom extends Component {
                     <Navigator to="/" title={this._mode + ' Product..'}
                         buttonName="Bact to products" />
                     <form className="mt-4" onSubmit={this.handleSubmit}>
+                        <div><ErrorList errors={this.state.errors} /></div>
+
                         <div className="form-group>">
                             <label>Name:</label>
                             <input type="text"
