@@ -16,7 +16,7 @@ class ProductList extends Component {
     }
 
     render() {
-        const { products, filter } = this.props
+        const { products, filter } = this.props;
         return (
             <React.Fragment>
                 <Navigator
@@ -47,6 +47,6 @@ class ProductList extends Component {
 
 ProductList.propType = {
     products: PropTypes.array.isRequired
-}
+};
 
-export default ProductList
+export default ProductList;

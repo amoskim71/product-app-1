@@ -11,7 +11,7 @@ const applyFilters = (products, filter) => {
         let reg = RegExp('.*' + filter.query + '.*', 'ig');
         return reg.test(product.title);
     })
-}
+};
 
 const mapStateToProps = (state) => ({
     products: applyFilters(state.products, state.filter),

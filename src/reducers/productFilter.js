@@ -2,7 +2,7 @@ import { PRODUCT_FILTER } from '../actions/actionTypes';
 
 const intialState = {
     query: ''
-}
+};
 
 export default (state = intialState, action) => {
     switch (action.type) {
@@ -14,4 +14,4 @@ export default (state = intialState, action) => {
         default:
             return state;
     }
-}
+};

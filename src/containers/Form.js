@@ -16,10 +16,10 @@ const mapStateToProps = (state, ownProps) => {
             //Redirect back to home page if no entity exists of that id.
             ownProps.history.push('/');
         }
-    }
+    };
     return {
         product
-    }
+    };
 };
 
 const mapDispatchToProps = (dispatch) => ({

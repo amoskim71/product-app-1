@@ -26,6 +26,6 @@ export const productSchema = {
     title: '',
     description: '',
     price: ''
-}
+};
 
 export const products = productFactory();

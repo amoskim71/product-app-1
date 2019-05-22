@@ -18,6 +18,6 @@ Navigator.propTypes = {
     title: PropTypes.string.isRequired,
     to: PropTypes.string.isRequired,
     buttonName: PropTypes.string.isRequired
-}
+};
 
 export default Navigator;
