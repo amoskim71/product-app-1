@@ -9,11 +9,11 @@ class ProductList extends Component {
 
     onProductDelete = (product) => {
         this.props.onProductDelete(product);
-    }
+    };
 
     onProductSearch = (query) => {
         this.props.onProductSearchFilter(query);
-    }
+    };
 
     render() {
         const { products, filter } = this.props;
@@ -43,7 +43,7 @@ class ProductList extends Component {
             </React.Fragment>
         )
     };
-}
+};
 
 ProductList.propType = {
     products: PropTypes.array.isRequired

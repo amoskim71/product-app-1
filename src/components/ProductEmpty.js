@@ -13,7 +13,7 @@ class ProductEmpty extends Component {
                 </Alert>
             </div>
         );
-    }
-}
+    };
+};
 
 export default ProductEmpty;

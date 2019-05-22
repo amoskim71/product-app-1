@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 class Search extends Component {
     onChangeHandle = (e) => {
         this.props.onSearch(e.target.value)
-    }
+    };
+
     render() {
         return (
             <div className="row">
@@ -17,12 +18,12 @@ class Search extends Component {
                 </div>
             </div>
         )
-    }
+    };
 
-}
+};
 
 Search.propTypes = {
     onSearch: PropTypes.func.isRequired
-}
+};
 
 export default Search;

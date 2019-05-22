@@ -14,7 +14,7 @@ class ProductFrom extends Component {
         this._mode = (this.state.product.id === 'undefined' || this.state.product.id === null)
             ? 'Create'
             : 'Edit';
-    }
+    };
 
     //Simple validation
     validate() {
@@ -35,7 +35,7 @@ class ProductFrom extends Component {
             errors: errors
         });
         return errors;
-    }
+    };
 
     onChagneHandle = (e) => {
 
@@ -50,7 +50,7 @@ class ProductFrom extends Component {
         });
 
         this.validate();
-    }
+    };
 
     handleSubmit = (e) => {
         //Prevent form submission
@@ -59,7 +59,7 @@ class ProductFrom extends Component {
         //validate the input
         let errors = this.validate();
 
-        //If their is no errors submit the form
+        //If there is no errors submit the form
         if (errors.length <= 0) {
             this.props.onProductSave(this.state.product);
             this.props.history.push('/');
@@ -71,7 +71,7 @@ class ProductFrom extends Component {
         this.setState({
             product: genreateFakeProduct()
         });
-    }
+    };
 
     render() {
         return (
@@ -129,8 +129,8 @@ class ProductFrom extends Component {
                 </div>
             </div>
         );
-    }
-}
+    };
+};
 
 ProductFrom.propTypes = {
     product: PropTypes.object

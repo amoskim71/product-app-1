@@ -8,11 +8,10 @@ class PageNotFound extends Component {
             <Alert title="Page Not Found.">
                 <p>The page you requested could not be found.
                     Please go back the home page.</p>
-                <Link to="/"
-                    className="btn btn-primary btn-sm">Go To HomePage</Link>
+                <Link to="/" className="btn btn-primary btn-sm">Go To HomePage</Link>
             </Alert>
         );
-    }
+    };
 }
 
 export default PageNotFound;

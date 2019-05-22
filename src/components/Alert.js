@@ -5,7 +5,8 @@ class Alert extends Component {
     static propTypes = {
         title: PropTypes.string.isRequired,
         varient: PropTypes.string,
-    }
+    };
+
     render() {
         const { title, children } = this.props;
         return (
@@ -16,7 +17,7 @@ class Alert extends Component {
                 </div>
             </Fragment>
         )
-    }
+    };
 
 }
 export default Alert;

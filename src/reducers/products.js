@@ -19,5 +19,5 @@ export default (state = products, action) => {
 
         default:
             return state;
-    }
-}
+    };
+};
